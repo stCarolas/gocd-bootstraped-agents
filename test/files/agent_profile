@@ -1,0 +1,19 @@
+{
+  "id": "agent",
+  "plugin_id": "cd.go.contrib.elastic-agent.docker",
+  "properties": [
+    {
+      "key": "Image",
+      "value": "gocd-agent-test"
+    },
+    {
+      "key": "Command"
+    },
+    {
+      "key": "Environment"
+    },
+    {
+      "key": "Hosts"
+    }
+  ]
+}

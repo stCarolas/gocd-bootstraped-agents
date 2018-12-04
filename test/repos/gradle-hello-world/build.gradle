@@ -1,0 +1,12 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "org.gradle:gradle-hello-world-plugin:0.2"
+  }
+}
+
+apply plugin: "org.gradle.hello-world"

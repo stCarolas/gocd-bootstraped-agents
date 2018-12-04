@@ -1,0 +1,2 @@
+echo 'export GO_EA_SSL_NO_VERIFY=true' >> /etc/profile.d/enviroment
+chmod 777 /etc/profile.d/enviroment

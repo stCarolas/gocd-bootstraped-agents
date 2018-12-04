@@ -1,0 +1,23 @@
+NODE_URL="https://nodejs.org/dist/v8.12.0/node-v8.12.0-linux-x86.tar.xz"
+
+install_node() {
+    local node_download_url=$1
+
+    apk add which make
+    cd /go
+    curl $node_download_url -Ss -o node.tar.xz
+    tar xf node.tar.xz
+    mv node-v* nodejs
+    chmod -R 777 /go/nodejs
+    ln -s /go/nodejs/bin/node /usr/bin/node
+    ln -s /go/nodejs/bin/npm /usr/bin/npm
+    cd nodejs/bin
+    for file in *
+    do
+        echo "linking /go/nodejs/bin/$file to /usr/bin/$file"
+        ln -f -s /go/nodejs/bin/$file /usr/bin/$file
+    done
+}
+
+apk add nodejs nodejs-npm
+echo "Node installed: $(/usr/bin/node --version)"

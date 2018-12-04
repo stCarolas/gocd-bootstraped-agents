@@ -1,0 +1,50 @@
+{
+  "plugin_id": "cd.go.contrib.elastic-agent.docker",
+  "configuration": [
+    {
+      "key": "private_registry_username"
+    },
+    {
+      "key": "private_registry_server"
+    },
+    {
+      "key": "go_server_url",
+      "value": "https://{{ gocd_ip }}:8154/go"
+    },
+    {
+      "key": "docker_client_key"
+    },
+    {
+      "key": "enable_private_registry_authentication",
+      "value": "false"
+    },
+    {
+      "key": "environment_variables"
+    },
+    {
+      "key": "docker_ca_cert"
+    },
+    {
+      "key": "pull_on_container_create",
+      "value": "false"
+    },
+    {
+      "key": "docker_uri",
+      "value": "unix:///var/run/docker.sock"
+    },
+    {
+      "key": "max_docker_containers",
+      "value": "2"
+    },
+    {
+      "key": "docker_client_cert"
+    },
+    {
+      "key": "private_registry_password"
+    },
+    {
+      "key": "auto_register_timeout",
+      "value": "2"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+mkdir /go/.ssh
+cp /data/config /go/.ssh/config
+chown -R go /go

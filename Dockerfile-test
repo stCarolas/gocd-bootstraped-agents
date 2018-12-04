@@ -1,0 +1,6 @@
+FROM gocd-agent
+
+ADD ssh /go/.ssh
+USER root
+RUN chown -R go /go/.ssh
+USER go
