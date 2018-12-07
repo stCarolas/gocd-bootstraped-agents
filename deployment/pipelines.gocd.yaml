@@ -5,31 +5,12 @@ pipelines:
     label_template: ${code[:10]}
     materials:
       code:
-        git: http://git.moscow.alfaintra.net/scm/gocd/gocd-agents
+        type: configrepo
         destination: code
-        auto_update: false
-      gocd-scripts:
-        git: http://git.moscow.alfaintra.net/scm/gocd/gocd-scripts-shared
-        destination: gocd-scripts
-        auto_update: false
     stages:
-    - test:
+    - publish_docker_image:
         jobs:
-          base_test:
-            elastic_profile_id: bats
+          gradle:
+            elastic_profile_id: dind
             tasks:
-              - script: 'cd code && bats test/base.bats'
-          gradle_test:
-            elastic_profile_id: bats
-            tasks:
-              - script: 'cd code && bats test/gradle.bats'
-          bats_test:
-            elastic_profile_id: bats
-            tasks:
-              - script: 'cd code && bats test/bats.bats'
-    - release:
-        elastic_profile_id: python
-        tasks:
-        - script: 'export GOCD_SCRIPTS=$(pwd)/gocd-scripts; 
-                   export CODE_PATH=$(pwd)/code;
-                   $GOCD_SCRIPTS/scripts/git_tag_bump_patch.sh '
+              - script: 'cd code && docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle'
