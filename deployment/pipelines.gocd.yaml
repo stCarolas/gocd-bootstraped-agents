@@ -13,4 +13,4 @@ pipelines:
           gradle:
             elastic_profile_id: dind
             tasks:
-              - script: 'cd code && docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle'
+              - script: 'cd code && sudo docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle'
