@@ -11,6 +11,6 @@ pipelines:
     - publish_docker_image:
         jobs:
           gradle:
-            elastic_profile_id: dind
+            elastic_profile_id: docker
             tasks:
               - script: 'cd code && sudo docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle'
