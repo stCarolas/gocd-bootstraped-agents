@@ -19,3 +19,14 @@ pipelines:
                   docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle
                   docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
                   docker push stcarolas/gocd-agent-gradle:latest
+    - publish_terraform:
+        jobs:
+          gradle:
+            resources:
+              - docker
+            tasks:
+              - script: |
+                  cd code
+                  docker build . -t stcarolas/gocd-agent-terraform:latest --build-arg AGENT_TYPE=terraform
+                  docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
+                  docker push stcarolas/gocd-agent-terraform:latest
