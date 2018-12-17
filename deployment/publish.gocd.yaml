@@ -8,7 +8,7 @@ pipelines:
         type: configrepo
         destination: code
     stages:
-    - publish_docker_image:
+    - publish_gradle:
         jobs:
           gradle:
             resources:
@@ -17,4 +17,5 @@ pipelines:
               - script: |
                   cd code
                   docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle
+                  docker login docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
                   docker push stcarolas/gocd-agent-gradle:latest
