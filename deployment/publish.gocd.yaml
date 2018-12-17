@@ -14,4 +14,7 @@ pipelines:
             resources:
               - docker
             tasks:
-              - script: 'cd code && docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle'
+              - script: |
+                cd code
+                docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle
+                docker push stcarolas/gocd-agent-gradle:latest
