@@ -1,7 +1,7 @@
 cp /data/git-credential-env /bin/
 chmod 777 /bin/git-credential-env
 git config --global credential.helper 'env'
-git config --global user.email "aekovalev@alfabank.ru"
+git config --global user.email "gocd@example.org"
 git config --global user.name "corp-tech-user"
 git config --global push.default simple
 cp -f /root/.gitconfig /go/.gitconfig

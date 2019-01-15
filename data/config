@@ -1,8 +1,2 @@
 Host *
     StrictHostKeyChecking no
-Host corpmesosint1
-	User root
-Host corpprelive*
-	User stcarolas
-Host * !corpmesosint1 !corpprelive*
-    User u_m0q9h
