@@ -1,4 +1,5 @@
 format_version: 2
+
 pipelines:
   PUBLISH_gocd_agents:
     group: GoCD
@@ -8,25 +9,11 @@ pipelines:
         type: configrepo
         destination: code
     stages:
-    - publish_gradle:
+    - publish:
         jobs:
           gradle:
-            resources:
-              - docker
+            elastic_profile_id: "docker"
             tasks:
               - script: |
                   cd code
-                  docker build . -t stcarolas/gocd-agent-gradle:latest --build-arg AGENT_TYPE=gradle
-                  docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-                  docker push stcarolas/gocd-agent-gradle:latest
-    - publish_terraform:
-        jobs:
-          gradle:
-            resources:
-              - docker
-            tasks:
-              - script: |
-                  cd code
-                  docker build . -t stcarolas/gocd-agent-terraform:latest --build-arg AGENT_TYPE=terraform
-                  docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-                  docker push stcarolas/gocd-agent-terraform:latest
+                  sh deployment/publish.sh
