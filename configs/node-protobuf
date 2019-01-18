@@ -4,5 +4,6 @@ install_zsh
 install_node
 install_glibc
 install_prototool
+install_protoc_gen_grpc_web
 disable_ssl_check_of_gocd
 setup_creds_for_git
