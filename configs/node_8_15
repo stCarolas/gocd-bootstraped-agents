@@ -1,9 +1,8 @@
 config_ssh
 install_bash
 install_zsh
+install_node
+install_bats
 install_node 8.15.0
-install_glibc
-install_prototool
-install_protoc_gen_grpc_web
 disable_ssl_check_of_gocd
 setup_creds_for_git

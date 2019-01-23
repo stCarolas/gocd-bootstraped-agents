@@ -4,9 +4,9 @@
 
 ### Запуск тестов
 Для запусков тестов нужно установить
-- bats-core (`npm install bats-core`) - фреймворк для запуска тестов
+- bats-core (`npm install bats`) - фреймворк для запуска тестов
 - mustache (`gem install mustache`) - шаблонизатор
-- jq  
+- jq
 
 Запускаются тесты командой
 ```
@@ -18,7 +18,7 @@ bats test
 bats test/gradle.bats
 ```
 
-Результат выглядит примерно так:  
+Результат выглядит примерно так:
 
 ![alt text](screens/bats.png)
 
@@ -30,7 +30,7 @@ bats test/gradle.bats
     gitserver_is_up
     gocd_is_up
     has_docker_agents_plugin_configured
-    has_gradle_agent_profile
+    has_agent_profile
     has_config_repo
     sleep 120
     pipeline_status=$(curl --silent http://localhost:8153/go/api/pipelines/mypipe/instance/1 | jq .stages[0].result)
@@ -45,9 +45,9 @@ built_agent
 gitserver_is_up
 gocd_is_up
 has_docker_agents_plugin_configured
-has_gradle_agent_profile
+has_agent_profile
 has_config_repo
 ```
-открываем в браузере http://localhost:8153/go и смотрим, что получилось:  
+открываем в браузере http://localhost:8153/go и смотрим, что получилось:
 
 ![alt text](screens/gocd.png)

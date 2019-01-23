@@ -1,0 +1,19 @@
+{
+  "name": "node_v8_9_4-hello-world",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "arui-scripts build",
+    "docker-build": "arui-scripts docker-build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "arui-scripts": "4.1.0"
+  },
+  "arui-scripts": {
+    "clientPolyfillsEntry": "./src/polyfills.js",
+    "debug": true
+  }
+}

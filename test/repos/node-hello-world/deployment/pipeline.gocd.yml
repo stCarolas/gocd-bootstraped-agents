@@ -1,0 +1,18 @@
+format_version: 3
+pipelines:
+  mypipe: # definition of mypipe1 pipeline
+    group: mygroup # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${mygit[:8]}"
+    materials:
+      mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+        # keyword git says about type of material and url at once
+        type: configrepo
+    stages: # list of stages in order
+      - build: # name of stage
+          clean_workspace: true
+          jobs:
+            npm: # name of the job
+              elastic_profile_id: "agent"
+              tasks: # ordered list of tasks to execute in job npm
+               - exec: # indicates type of task
+                   command: "npm build"
