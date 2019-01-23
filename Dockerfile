@@ -16,6 +16,7 @@ RUN \
 
 ADD data/  /data/
 ADD configs/  /configs/
+ADD scripts/$AGENT_TYPE  /scripts/
 ADD bootstrap.d/ /bootstrap.d/
 
 RUN chmod -R 777 /bootstrap.d/ && \
