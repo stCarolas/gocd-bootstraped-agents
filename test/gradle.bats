@@ -6,7 +6,7 @@ load functions/core
     gitserver_is_up
     gocd_is_up
     has_docker_agents_plugin_configured
-    has_gradle_agent_profile
+    has_agent_profile
     has_config_repo gradle-hello-world
     sleep 120
     pipeline_status=$(curl --silent http://localhost:8153/go/api/pipelines/mypipe/instance/1 | jq .stages[0].result)

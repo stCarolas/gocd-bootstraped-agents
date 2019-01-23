@@ -17,7 +17,7 @@ gocd_is_up() {
 _get_gocd_address() {
     docker inspect \
         --format='{{(index (index .NetworkSettings.IPAddress))}}' \
-        gocd 
+        gocd
 }
 
 _get_git_address() {
@@ -104,7 +104,7 @@ has_docker_agents_plugin_configured() {
         -X POST -d @/tmp/request
 }
 
-has_gradle_agent_profile() {
+has_agent_profile() {
     curl "http://$(_get_gocd_address):8153/go/api/elastic/profiles" \
         -H 'Accept: application/vnd.go.cd.v1+json' \
         -H 'Content-Type:application/json' \
