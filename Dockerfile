@@ -23,10 +23,7 @@ RUN chmod -R 777 /bootstrap.d/ && \
     PATH=$PATH:/bootstrap.d/ && \
     for file in $(cat /configs/${AGENT_TYPE}); do echo "Start runnig $file:" && "$file" && echo "End running $file"; done
 
-# execute the binary, preferably as the `go` user
-USER go
 CMD export GO_EA_SSL_NO_VERIFY=true && \
     (nohup /usr/local/bin/dockerd-entrypoint.sh > /dev/null &) && \
     sleep 5 && \
-    chmod 777 /var/run/docker.sock && \
     /go-agent
