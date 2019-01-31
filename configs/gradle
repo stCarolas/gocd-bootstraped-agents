@@ -1,4 +1,7 @@
 config_ssh
 install_bash
 install_zsh
+install_jdk
+disable_ssl_check_of_gocd
+setup_creds_for_git
 
