@@ -16,12 +16,11 @@ RUN \
 
 ADD data/  /data/
 ADD configs/  /configs/
+ADD bootstrap  /
 ADD scripts/$AGENT_TYPE  /scripts/
 ADD bootstrap.d/ /bootstrap.d/
 
-RUN chmod -R 777 /bootstrap.d/ && \
-    PATH=$PATH:/bootstrap.d/ && \
-    for file in $(cat /configs/${AGENT_TYPE}); do echo "Start runnig $file:" && "$file" && echo "End running $file"; done
+RUN /bootstrap
 
 CMD export GO_EA_SSL_NO_VERIFY=true && \
     (nohup /usr/local/bin/dockerd-entrypoint.sh > /dev/null &) && \

@@ -1,0 +1,9 @@
+#!/bin/sh
+chmod -R 777 /bootstrap.d/
+export PATH=$PATH:/bootstrap.d/
+for file in $(cat /configs/${AGENT_TYPE})
+do
+    echo "Start runnig $file:"
+    "$file"
+    echo "End running $file"
+done

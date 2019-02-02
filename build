@@ -1,0 +1,35 @@
+#! /bin/sh
+set -e
+agent=$1
+rm -rf /tmp/gocd
+mkdir /tmp/gocd
+cp -r -f bootstrap /tmp/gocd/bootstrap
+
+BOOTSTRAP=$([ ! -z $BOOTSTRAP_PATH ] && echo $BOOTSTRAP_PATH || echo "bootstrap.d" )
+cp -r -f $BOOTSTRAP /tmp/gocd/bootstrap.d
+chmod  777 /tmp/gocd/bootstrap.d/*
+
+CONFIGS=$([ ! -z $CONFIGS_PATH ] && echo $CONFIGS_PATH || echo "configs" )
+cp -r -f $CONFIGS /tmp/gocd/configs
+
+DATA=$([ ! -z $DATA_PATH ] && echo $DATA_PATH || echo "data" )
+cp -r -f $DATA /tmp/gocd/data
+
+SCRIPTS=$([ ! -z $SCRIPTS_PATH ] && echo $SCRIPTS_PATH || echo "scripts" )
+if [ -d "$SCRIPTS" ]
+then
+    cp -r -f $SCRIPTS /tmp/gocd/scripts
+else
+    mkdir /tmp/gocd/scripts
+fi
+if [ ! -d "/tmp/gocd/scripts/$agent" ]
+then
+    mkdir /tmp/gocd/scripts/$agent
+fi
+chmod  -R 777 /tmp/gocd/scripts/*
+
+DOCKERFILE=$([ ! -z $DOCKERFILE_PATH ] && echo $DOCKERFILE_PATH || echo "Dockerfile" )
+cp -r -f $DOCKERFILE /tmp/gocd/Dockerfile
+
+cd /tmp/gocd
+docker build . -t stcarolas/gocd-agent-$agent --build-arg AGENT_TYPE=$agent
