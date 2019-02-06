@@ -1,0 +1,6 @@
+cd ~
+curl --location -o gradle.zip https://services.gradle.org/distributions/gradle-5.2-bin.zip
+apk add unzip
+unzip gradle.zip
+mv gradle-5.2/bin/* /usr/local/bin/
+mv gradle-5.2/lib/* /usr/local/lib/
