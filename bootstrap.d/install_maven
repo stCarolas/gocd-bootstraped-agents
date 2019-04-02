@@ -4,3 +4,4 @@ tar -zxvf apache-maven-$MAVEN_VERSION-bin.tar.gz
 rm apache-maven-$MAVEN_VERSION-bin.tar.gz
 mv apache-maven-$MAVEN_VERSION apache-maven
 chmod -R 777 /apache-maven
+echo 'export PATH=$PATH:/apache-maven/bin' >> /etc/profile.d/enviroment.sh

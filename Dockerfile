@@ -23,6 +23,8 @@ ADD bootstrap.d/ /bootstrap.d/
 RUN /bootstrap
 
 CMD export GO_EA_SSL_NO_VERIFY=true && \
+    chmod 777 /etc/profile.d/* && \
+    source /etc/profile && \
     (nohup /usr/local/bin/dockerd-entrypoint.sh > /dev/null &) && \
     sleep 5 && \
     /go-agent
