@@ -12,7 +12,7 @@ pipelines:
     - publish:
         jobs:
           gradle:
-            elastic_profile_id: "docker"
+            elastic_profile_id: "docker.build-docker-image"
             tasks:
               - script: |
                   cd code
