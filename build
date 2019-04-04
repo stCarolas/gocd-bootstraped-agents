@@ -26,6 +26,17 @@ if [ ! -d "/tmp/gocd/scripts/$agent" ]
 then
     mkdir /tmp/gocd/scripts/$agent
 fi
+if [ -d "/tmp/gocd/scripts/common" ]
+then
+    if [ -f "/tmp/gocd/scripts/$agent/config" ]
+    then
+        for file in $(cat /tmp/gocd/scripts/$agent/config)
+        do
+            cp /tmp/gocd/scripts/common/$file /tmp/gocd/scripts/$agent
+        done
+        rm -f /tmp/gocd/scripts/$agent/config
+    fi
+fi
 chmod  -R 777 /tmp/gocd/scripts/*
 
 DOCKERFILE=$([ ! -z $DOCKERFILE_PATH ] && echo $DOCKERFILE_PATH || echo "Dockerfile" )
