@@ -7,10 +7,10 @@ ARG AGENT_TYPE="gradle"
 # The directory and user that'll be used for the gocd agent process. Currently hardcoded in the bootstrapper ;-/
 RUN \
     addgroup -g 992 dockerroot && adduser -G dockerroot -h /go go -D \
-    && apk add --no-cache git openssh-client bash curl
+    && apk add --no-cache git openssh-client bash curl nss
 RUN \
     cd /tmp \
-    && curl --location -o jdk.tar.gz https://cdn.azul.com/zulu/bin/zulu12.1.3-ca-jdk12-linux_musl_x64.tar.gz \
+    && curl --location -o jdk.tar.gz https://cdn.azul.com/zulu/bin/zulu11.29.11-ca-jdk11.0.2-linux_musl_x64.tar.gz \
     && tar -xzvf jdk.tar.gz \
     && mv zulu* zulu \
     && rm -f jdk.tar.gz \
