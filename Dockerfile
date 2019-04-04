@@ -7,7 +7,17 @@ ARG AGENT_TYPE="gradle"
 # The directory and user that'll be used for the gocd agent process. Currently hardcoded in the bootstrapper ;-/
 RUN \
     addgroup -g 992 dockerroot && adduser -G dockerroot -h /go go -D \
-    && apk add --no-cache openjdk8-jre-base git mercurial subversion openssh-client bash curl
+    && apk add --no-cache git openssh-client bash curl
+RUN \
+    cd /tmp \
+    && curl --location -o jdk.tar.gz https://cdn.azul.com/zulu/bin/zulu12.1.3-ca-jdk12-linux_musl_x64.tar.gz \
+    && tar -xzvf jdk.tar.gz \
+    && mv zulu* zulu \
+    && rm -f jdk.tar.gz \
+    && mv zulu /usr/lib/jvm/ \
+    && chmod -R 777 /usr/lib/jvm \
+    && echo "export PATH=$PATH:/usr/lib/jvm/bin" >> /etc/profile.d/enviroment.sh \
+    && echo "export JAVA_HOME=$PATH:/usr/lib/jvm" >> /etc/profile.d/enviroment.sh
 
 # Download and ensure that the binary is executable
 RUN \
