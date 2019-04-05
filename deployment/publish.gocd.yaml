@@ -16,4 +16,5 @@ pipelines:
             tasks:
               - script: |
                   cd code
+                  export AGENT=packer
                   sh deployment/publish.sh
