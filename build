@@ -16,25 +16,21 @@ DATA=$([ ! -z $DATA_PATH ] && echo $DATA_PATH || echo "data" )
 cp -r -f $DATA /tmp/gocd/data
 
 SCRIPTS=$([ ! -z $SCRIPTS_PATH ] && echo $SCRIPTS_PATH || echo "scripts" )
-if [ -d "$SCRIPTS" ]
+if [ -d "$SCRIPTS" ] && [ -d "$SCRIPTS/$agent" ]
 then
-    cp -r -f $SCRIPTS /tmp/gocd/scripts
+    cp -r -f $SCRIPTS/$agent /tmp/gocd/scripts
 else
     mkdir /tmp/gocd/scripts
 fi
-if [ ! -d "/tmp/gocd/scripts/$agent" ]
+if [ -d "$SCRIPTS/common" ]
 then
-    mkdir /tmp/gocd/scripts/$agent
-fi
-if [ -d "/tmp/gocd/scripts/common" ]
-then
-    if [ -f "/tmp/gocd/scripts/$agent/config" ]
+    if [ -f "$SCRIPTS/$agent/config" ]
     then
-        for file in $(cat /tmp/gocd/scripts/$agent/config)
+        for file in $(cat $SCRIPTS/$agent/config)
         do
-            cp /tmp/gocd/scripts/common/$file /tmp/gocd/scripts/$agent
+            cp $SCRIPTS/common/$file /tmp/gocd/scripts
         done
-        rm -f /tmp/gocd/scripts/$agent/config
+        rm -f /tmp/gocd/scripts/config
     fi
 fi
 chmod  -R 777 /tmp/gocd/scripts/*
@@ -43,4 +39,4 @@ DOCKERFILE=$([ ! -z $DOCKERFILE_PATH ] && echo $DOCKERFILE_PATH || echo "Dockerf
 cp -r -f $DOCKERFILE /tmp/gocd/Dockerfile
 
 cd /tmp/gocd
-docker build . -t stcarolas/gocd-agent-$agent --build-arg AGENT_TYPE=$agent
+podman build -t stcarolas/gocd-agent-$agent --build-arg AGENT_TYPE=$agent .
