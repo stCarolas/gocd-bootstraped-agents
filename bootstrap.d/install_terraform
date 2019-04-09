@@ -1,4 +1,4 @@
-terraform_download_url="https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip"
+terraform_download_url="https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip"
 apk add --no-cache unzip
 curl $terraform_download_url -Ss -o terraform.zip
 unzip terraform.zip
