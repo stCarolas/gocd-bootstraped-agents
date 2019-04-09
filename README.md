@@ -1,3 +1,9 @@
+### Сборка
+```
+git clone git@github.com:mango-techsurance/gocd-pipelines.git
+export SCRIPTS_PATH=$(pwd)/gocd-pipelines
+./build <имя агента>
+```
 ### Как добавить нового агента
 1) Добавляем файлик `configs/<имя агента>`. В нем перечисляем названия скриптов, которые надо накатить из `bootstrap.d`
 2) запускаем `docker build . -t <name> --build-arg AGENT_TYPE=<имя агента>`
