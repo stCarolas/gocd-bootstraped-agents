@@ -33,7 +33,7 @@ then
         rm -f /tmp/gocd/scripts/config
     fi
 fi
-chmod  -R 777 /tmp/gocd/scripts/*
+chmod  -R 777 /tmp/gocd/scripts
 
 DOCKERFILE=$([ ! -z $DOCKERFILE_PATH ] && echo $DOCKERFILE_PATH || echo "Dockerfile" )
 cp -r -f $DOCKERFILE /tmp/gocd/Dockerfile
