@@ -1,5 +1,4 @@
-ARG PRIVATE_REPO=""
-FROM ${PRIVATE_REPO}docker:dind
+FROM docker:dind
 
 ARG AGENT_TYPE="gradle"
 
