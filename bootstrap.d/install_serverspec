@@ -1,0 +1,2 @@
+apk add --update --no-cache ruby ruby-rdoc
+gem install --no-user-install serverspec
