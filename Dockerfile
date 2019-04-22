@@ -15,7 +15,7 @@ RUN \
     && mv zulu /usr/lib/jvm/ \
     && chmod -R 777 /usr/lib/jvm \
     && echo "export PATH=$PATH:/usr/lib/jvm/bin" >> /etc/profile.d/enviroment.sh \
-    && echo "export JAVA_HOME=$PATH:/usr/lib/jvm" >> /etc/profile.d/enviroment.sh
+    && echo "export JAVA_HOME=/usr/lib/jvm" >> /etc/profile.d/enviroment.sh
 
 # Download and ensure that the binary is executable
 RUN \

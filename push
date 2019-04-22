@@ -2,4 +2,4 @@
 set -e
 
 ./build $1
-podman push stcarolas/gocd-agent-$agent
+podman push stcarolas/gocd-agent-$1
