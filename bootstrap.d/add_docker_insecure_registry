@@ -1,0 +1,3 @@
+#! /bin/sh
+mkdir -p /etc/docker
+echo '{"insecure-registries" : ["nexus.service.consul:5000"]"}' > /etc/docker/daemon.json
