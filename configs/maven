@@ -3,5 +3,6 @@ install_bash
 install_zsh
 install_jdk
 install_maven
+add_docker_insecure_registry
 disable_ssl_check_of_gocd
 setup_creds_for_git
