@@ -1,0 +1,6 @@
+config_ssh
+install_bash
+install_python
+install_openstack
+disable_ssl_check_of_gocd
+setup_creds_for_git
