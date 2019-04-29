@@ -39,4 +39,10 @@ DOCKERFILE=$([ ! -z $DOCKERFILE_PATH ] && echo $DOCKERFILE_PATH || echo "Dockerf
 cp -r -f $DOCKERFILE /tmp/gocd/Dockerfile
 
 cd /tmp/gocd
-podman build -t stcarolas/gocd-agent-$agent --no-cache --build-arg AGENT_TYPE=$agent .
+if hash podman
+then
+    export DOCKER_BINARY=podman
+else
+    export DOCKER_BINARY=docker
+fi
+$DOCKER_BINARY build -t stcarolas/gocd-agent-$agent --no-cache --build-arg AGENT_TYPE=$agent .

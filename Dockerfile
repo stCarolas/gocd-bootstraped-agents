@@ -1,4 +1,4 @@
-FROM docker.io/docker:dind
+FROM docker.io/docker:edge-dind
 
 ARG AGENT_TYPE="gradle"
 

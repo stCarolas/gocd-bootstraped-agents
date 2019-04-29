@@ -1,1 +1,4 @@
+apk update
 apk add nodejs-current
+apk add nodejs-npm
+npm install npm

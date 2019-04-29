@@ -1,8 +1,8 @@
 config_ssh
 install_bash
 install_zsh
-install_node
 install_glibc
+install_node
 install_prototool
 install_python
 install_semver

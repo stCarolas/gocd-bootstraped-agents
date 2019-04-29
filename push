@@ -2,4 +2,10 @@
 set -e
 
 ./build $1
-podman push stcarolas/gocd-agent-$1
+if hash podman
+then
+    export DOCKER_BINARY=podman
+else
+    export DOCKER_BINARY=docker
+fi
+docker push stcarolas/gocd-agent-$1
