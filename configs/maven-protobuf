@@ -5,6 +5,7 @@ install_jdk
 install_maven
 install_glibc
 install_protobuf
+install_protoc_gen_grpc_web
 add_docker_insecure_registry
 disable_ssl_check_of_gocd
 setup_creds_for_git
