@@ -1,0 +1,2 @@
+apk add --update --no-cache ruby ruby-rdoc ruby-rake ruby-dev gcc libc-dev make
+gem install --no-user-install fpm
