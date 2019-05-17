@@ -1,0 +1,4 @@
+FROM docker.io/fedora:30
+RUN rm -rf /etc/yum.repos.d/fedora-updates*
+RUN dnf install -y dnf-plugins-core
+RUN dnf config-manager --add-repo http://nexus.service.consul/rpm
