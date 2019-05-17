@@ -1,5 +1,5 @@
 FROM docker.io/fedora:30
-RUN dnf update -y
+RUN rm -rf /etc/yum.repos.d/fedora-updates*
 RUN dnf install -y dnf-plugins-core
 RUN dnf config-manager --add-repo http://nexus.service.consul/repository/rpm
 RUN dnf install -y zulu-11
