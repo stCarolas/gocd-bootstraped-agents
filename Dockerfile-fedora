@@ -1,5 +1,0 @@
-FROM docker.io/fedora:30
-RUN rm -rf /etc/yum.repos.d/fedora-updates*
-RUN dnf install -y dnf-plugins-core
-RUN dnf config-manager  --nogpgcheck --add-repo http://nexus.service.consul/repository/rpm
-RUN dnf install -y --nogpgcheck zulu-11
